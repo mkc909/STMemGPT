@@ -60,7 +60,7 @@ if "messages" not in st.session_state:
 
 st.set_page_config(page_title="Map Mentor - Ultimate Wardley Map Assistant", layout="wide")
 st.sidebar.title("Ultimate AI Assistant")
-st.sidebar.title("Wardley Mapping Version")
+st.sidebar.title("Data Mesh Version")
 st.sidebar.divider()
 st.sidebar.markdown("Developed by Mark Craddock](https://twitter.com/mcraddock)", unsafe_allow_html=True)
 st.sidebar.markdown("Current Version: 1.0.0")
