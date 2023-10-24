@@ -58,7 +58,7 @@ if "messages" not in st.session_state:
             """
         })
 
-st.set_page_config(page_title="Map Mentor - Ultimate Wardley Map Assistant", layout="wide")
+st.set_page_config(page_title="Data Mesh Mentor - Ultimate Data Mesh Assistant", layout="wide")
 st.sidebar.title("Ultimate AI Assistant")
 st.sidebar.title("Data Mesh Version")
 st.sidebar.divider()
