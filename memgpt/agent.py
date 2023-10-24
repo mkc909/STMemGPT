@@ -100,7 +100,7 @@ def get_ai_reply_async(
             messages=message_sequence,
             functions=functions,
             function_call=function_call,
-            pl_tags=["stmemgpt-alpha"],
+            pl_tags=["datamesh-alpha"],
         )
 
         # special case for 'length'
