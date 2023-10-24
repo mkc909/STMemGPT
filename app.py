@@ -74,12 +74,12 @@ if not st.session_state.memgpt_agent:
         # Memory stored from FAISS
         index, archival_database = utils.prepare_archival_index('/mount/src/stmemgpt/memgpt/personas/examples/mapmentor_archive')
         persistence_manager = InMemoryStateManagerWithFaiss(index, archival_database)
-        HUMAN = 'wardley_awareness'
-        PERSONA = 'mapmentor_docs'
+        HUMAN = 'datamesh_awareness'
+        PERSONA = 'datamesh_docs'
     else:
         # Memory stored in memory
-        HUMAN = 'wardley_awareness'
-        PERSONA = 'mapmentor_chat'
+        HUMAN = 'datamesh_awareness'
+        PERSONA = 'datamesh_chat'
         persistence_manager = InMemoryStateManager()
     
     memgpt_agent = presets.use_preset('memgpt_chat', MODEL, personas.get_persona_text(PERSONA), humans.get_human_text(HUMAN), interface, persistence_manager)
