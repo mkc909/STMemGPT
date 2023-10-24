@@ -72,7 +72,7 @@ st.sidebar.divider()
 if not st.session_state.memgpt_agent:
     if MODE == "Archive":
         # Memory stored from FAISS
-        index, archival_database = utils.prepare_archival_index('/mount/src/stmemgpt/memgpt/personas/examples/mapmentor_archive')
+        index, archival_database = utils.prepare_archival_index('/mount/src/stmemgpt/memgpt/personas/examples/datamesh_archive')
         persistence_manager = InMemoryStateManagerWithFaiss(index, archival_database)
         HUMAN = 'datamesh_awareness'
         PERSONA = 'datamesh_docs'
