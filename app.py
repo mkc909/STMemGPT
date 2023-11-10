@@ -19,16 +19,18 @@ import memgpt.personas.personas as personas
 import memgpt.humans.humans as humans
 from memgpt.persistence_manager import InMemoryStateManager, InMemoryStateManagerWithPreloadedArchivalMemory, InMemoryStateManagerWithFaiss
 
-#MODEL = "gpt-3"
 #MODEL = "gpt-3.5-turbo"
 #MODEL = "gpt-3.5-turbo-0301"
 #MODEL = "gpt-3.5-turbo-0613"
-#MODEL = "gpt-3.5-turbo-16k"
+#MODEL = "gpt-3.5-turbo-1106"
+MODEL = "gpt-3.5-turbo-16k"
 #MODEL = "gpt-3.5-turbo-16k-0613"
-MODEL = "gpt-4"
-#MODEL = "gpt-4-0314"
+#MODEL = "gpt-4"
+#MODEL = "gpt-4-0613"
 #MODEL = "gpt-4-0613"
 #MODEL = "gpt-4-32k-0613"
+#MODEL = "gpt-4-1106-preview"
+#MODEL = "gpt-4-vision-preview"
 
 MODE = "Archive"
 #MODE = "Chat"
@@ -77,7 +79,7 @@ st.sidebar.title("Ultimate AI Assistant")
 st.sidebar.title("Wardley Mapping Version")
 st.sidebar.divider()
 st.sidebar.markdown("Developed by Mark Craddock](https://twitter.com/mcraddock)", unsafe_allow_html=True)
-st.sidebar.markdown("Current Version: 1.6.0")
+st.sidebar.markdown("Current Version: 1.9.0")
 #st.sidebar.write(st.session_state.session_id)
 st.sidebar.divider()
 
@@ -109,17 +111,16 @@ def process_assistant_messages(new_messages):
         st.session_state.messages.append({"role": "assistant", "content": response})
     return response
 
-if not st.session_state.memgpt_agent:
+if user_openai_api_key:
     # If the user has provided an API key, use it
     # Swap out openai for promptlayer
     promptlayer.api_key = st.secrets["PROMPTLAYER"]
     openai = promptlayer.openai
-    
-    if user_openai_api_key:
-        OPENAI_API_KEY = user_openai_api_key
-    else:
-        st.warning("Please enter your OpenAI API key", icon="⚠️")
-        
+    openai.api_key = user_openai_api_key
+else:
+    st.warning("Please enter your OpenAI API key", icon="⚠️")
+
+if not st.session_state.memgpt_agent:        
     if MODE == "Archive":
         # Memory stored from FAISS
         index, archival_database = utils.prepare_archival_index('/mount/src/stmemgpt/memgpt/personas/examples/mapmentor_archive')
